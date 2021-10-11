@@ -28,19 +28,10 @@ fn main() {
     let mut network = Network::new(&[784, 100, 100, 10]).unwrap();
     println!("{:?}", network);
 
-    let mut train_values = vec![];
+    let inputs = get_input_vec("data/train-images.idx3-ubyte".parse().unwrap(), 100).unwrap();
 
-    let input = Matrix {
-        values: vec![vec![1.0], vec![0.0]],
-        rows: 2,
-        cols: 1,
-    };
-    let desired = Matrix {
-        values: vec![vec![1.0]],
-        rows: 1,
-        cols: 1,
-    };
-    train_values.push(TrainValues{input, desired_output:desired});
+    let expected_results = get_labels("data/train-labels.idx1-ubyte".parse().unwrap(), 100).unwrap();
+    println!("Finished loading the values.");
 
 
     // let mut inputs = vec![];
